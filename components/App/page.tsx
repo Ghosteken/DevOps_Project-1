@@ -24,7 +24,7 @@ const Star: React.FC<{ filled?: boolean }> = ({ filled = true }) => (
     xmlns="http://www.w3.org/2000/svg"
     viewBox="0 0 24 24"
     className="w-4 h-4 inline-block mr-0.5"   
-    fill={filled ? "#FFD700" : "none"}      
+    fill={filled ? "#FFD700" : "none"}       
     stroke={filled ? "#FFD700" : "#9CA3AF"}  
     strokeWidth="1.5"
   >
@@ -35,23 +35,21 @@ const Star: React.FC<{ filled?: boolean }> = ({ filled = true }) => (
     />
   </svg>
 );
-
-
 const FeatureCard: React.FC<{ icon: React.ReactNode; title: string }> = ({
   icon,
   title,
 }) => (
   <div className="flex items-center bg-[#1c1c1c] rounded-2xl overflow-hidden shadow-md">
     <div className="bg-yellow-500 w-20 h-20 flex items-center justify-center">
+      {icon}
     </div>
     <div className="flex-1 text-center md:text-left px-6">
       <span className="text-white text-lg font-semibold tracking-wide">
+        {title}
       </span>
     </div>
   </div>
 );
-
-
 const App: React.FC = () => {
   return (
     <div className="min-h-screen bg-black text-gray-100 font-sans">
@@ -72,7 +70,6 @@ const App: React.FC = () => {
           <h3 className="text-2xl md:text-3xl font-black text-yellow-400 mt-2">
             YOUR FOOD JUST BY PHONE
           </h3>
-
           <div className="mt-6 flex flex-col gap-4">
   <FeatureCard
     icon={
