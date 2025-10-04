@@ -65,16 +65,31 @@ const OfferSection: React.FC = () => {
       </section>
 
       {/* Newsletter Section */}
-      <section className="newsletter-section">
-        <div className="newsletter-content">
-          <h2 className="newsletter-title">GET EXCLUSIVE UPDATE</h2>
-          <p className="newsletter-subtitle">Subscribe to our newsletter</p>
-          <form className="newsletter-form">
-            <input type="email" placeholder="Email" className="newsletter-input" required />
-            <button type="submit" className="newsletter-button">
-              Subscribe Now
-            </button>
-          </form>
+     <section>
+        <div className="bg-yellow-400 px-6 py-12 sm:px-12">
+          <div className="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6">
+            {/* Left Section */}
+            <div className="text-left">
+              <h2 className="text-3xl sm:text-4xl font-semibold text-black mb-2">
+                GET EXCLUSIVE UPDATE
+              </h2>
+              <p className="text-white text-sm sm:text-white pl-4">
+                Stay ahead with the freshest scoop.
+              </p>
+            </div>
+
+            {/* Right Section - Form */}
+            <div className="flex flex-col sm:flex-row gap-3 w-full md:w-auto">
+              <input
+                type="email"
+                placeholder="Email"
+                className="px-6 py-3 rounded-lg bg-gray-200 text-gray-800 placeholder-gray-600 focus:outline-none focus:ring-2 focus:ring-black w-full sm:w-80"
+              />
+              <button className="px-8 py-3 bg-black text-white rounded-lg font-medium hover:bg-gray-900 transition-colors whitespace-nowrap">
+                Subscribe Now
+              </button>
+            </div>
+          </div>
         </div>
       </section>
     </div>
