@@ -1,97 +1,258 @@
-// App.tsx
+"use client";
+
 import React from "react";
+import { ChevronRight } from "lucide-react";
+import Image from "next/image";
 
-interface Promo {
-  title: string;
-  description: string;
-  image: string;
-  bgColor: string;
-}
-
-const promos: Promo[] = [
-  {
-    title: "GET A 10% DISCOUNT ON PAYDAY WEEK",
-    description: "Buy Online",
-    image: "Burger3.png",
-    bgColor: "#222"
-  },
-  {
-    title: "BUY 1 COKE GET MORE FREE 1 COKE",
-    description: "Buy Online",
-    image: "cocacola.png",
-    bgColor: "#222"
-  }
-];
-
-const App: React.FC = () => {
+export default function Hero() {
   return (
-    <div style={{ background: "#111", color: "#fff", fontFamily: "Arial, sans-serif", minHeight: "100vh", padding: "0 0 40px 0" }}>
-      <header style={{ display: "flex", alignItems: "center", padding: "24px", background: "#181818" }}>
-        <img src="Burger1.png" alt="Burger" style={{ height: "240px" }} />
-        <div style={{ marginLeft: "32px" }}>
-          <h1 style={{ margin: "0 0 16px 0", fontSize: "2rem" }}>ENJOY BURGER MAKE YOUR TUMMY HAPPY</h1>
-          <p style={{ margin: "0 0 16px 0", fontSize: "1rem", maxWidth: "460px" }}>
-            Whether you’re craving familiar favorites or exploring culinary innovations, burgers come in a remarkable range of styles.
-          </p>
-          <div style={{ display: "flex", gap: "24px" }}>
-            <div style={{ display: "flex", alignItems: "center", gap: "8px" }}>
-              <img src="Delicious.png" alt="Delicious" style={{ width: "24px", height: "24px" }} />
-              Delicious
-            </div>
-            <div style={{ display: "flex", alignItems: "center", gap: "8px" }}>
-              <img src="fresh.png" alt="Fresh" style={{ width: "24px", height: "24px" }} />
-              Fresh
-            </div>
-            <div style={{ display: "flex", alignItems: "center", gap: "8px" }}>
-              <img src="organic.png" alt="Organic" style={{ width: "24px", height: "24px" }} />
-              Organic
+    <div className="min-h-screen bg-black text-white mb-12">
+      {/* Hero Section */}
+      <div className="container mx-auto px-4 py-12">
+        <div className="grid md:grid-cols-2 items-center">
+          {/* Left - Burger Image */}
+          <div className="relative">
+            <div className="relative">
+              <div className="w-full max-w-md mx-auto">
+                <Image
+                  src="/Burger1.png"
+                  alt="Delicious Burger"
+                  width={300} // control width
+                  height={100} // decrease height
+                  className="rounded-lg object-cover"
+                />
+              </div>
             </div>
           </div>
-          <a href="#" style={{ display: "inline-block", marginTop: "20px", background: "#ffd700", color: "#222", padding: "10px 22px", borderRadius: "6px", textDecoration: "none" }}>
-            Learn more
-          </a>
+
+          {/* Right - Content */}
+          <div className="space-y-6">
+            <h1 className="text-3xl md:text-4xl font-bold leading-tight">
+              ENJOY BURGER MAKE
+              <br />
+              YOUR TUMMY HAPPY
+            </h1>
+
+            <div className="w-45 h-0.5 bg-yellow-400"></div>
+
+            <div className="w-[400px] text-center">
+              <p className="text-gray-300 text-lg">
+                Whether you're craving familiar favorites or
+                <br />
+                exploring culinary innovations, burgers come <br />
+                in a remarkable range of styles.
+              </p>
+            </div>
+
+            {/* Features */}
+            <div className="flex gap-25 py-4">
+              <div className="flex flex-col items-center gap-2">
+                <div className="w-12 h-12 flex items-center justify-center">
+                  <Image
+                    src="/Delicious.png"
+                    alt="Burger"
+                    width={80}
+                    height={80}
+                    className="rounded object-cover"
+                  />
+                </div>
+                <span className="text-sm font-semibold">Delicious</span>
+              </div>
+
+              <div className="flex flex-col items-center gap-2">
+                <div className="w-12 h-12 flex items-center justify-center">
+                  <Image
+                    src="/fresh.png"
+                    alt="Burger"
+                    width={80}
+                    height={80}
+                    className="rounded object-cover"
+                  />
+                </div>
+                <span className="text-sm font-semibold">Fresh</span>
+              </div>
+
+              <div className="flex flex-col items-center gap-2">
+                <div className="w-12 h-12 flex items-center justify-center">
+                  <Image
+                    src="/organic.png"
+                    alt="Burger"
+                    width={80}
+                    height={80}
+                    className="rounded object-cover"
+                  />
+                </div>
+                <span className="text-sm font-semibold">Organic</span>
+              </div>
+            </div>
+
+            <button className="bg-yellow-400 text-black px-8 py-3 rounded font-semibold hover:bg-yellow-500 transition">
+              learn more
+            </button>
+          </div>
         </div>
-      </header>
+      </div>
+      <div className="border-t border-yellow-500 my-4"></div>
 
-      <section style={{ display: "flex", justifyContent: "center", gap: "20px", margin: "40px 0" }}>
-        <a href="#" style={{ background: "#ffd700", color: "#222", borderRadius: "8px", textAlign: "center", width: "160px", padding: "18px 0", boxShadow: "0 2px 12px #2222" }}>
-          <img src="Burger2.png" alt="Food" style={{ width: "100px" }} /> <br /> Food<br />Buy Online
-        </a>
-        <a href="#" style={{ background: "#1db954", color: "#fff", borderRadius: "8px", textAlign: "center", width: "160px", padding: "18px 0", boxShadow: "0 2px 12px #2222" }}>
-          <img src="potato .png" alt="Snack" style={{ width: "100px" }} /> <br /> Snack<br />Buy Online
-        </a>
-        <a href="#" style={{ background: "#e55353", color: "#fff", borderRadius: "8px", textAlign: "center", width: "160px", padding: "18px 0", boxShadow: "0 2px 12px #2222" }}>
-          <img src="juice.png" alt="Beverage" style={{ width: "100px" }} /> <br /> Beverage<br />Buy Online
-        </a>
-      </section>
-
-      <section style={{ display: "flex", justifyContent: "center", gap: "26px", marginBottom: "40px" }}>
-        {promos.map((promo, idx) => (
-          <div key={idx} style={{ background: promo.bgColor, color: "#fff", borderRadius: "12px", padding: "28px 24px", width: "340px", display: "flex", alignItems: "center", gap: "16px", boxShadow: "0 2px 14px #2223" }}>
-            <img src={promo.image} alt="" style={{ width: "80px", borderRadius: "50%" }} />
-            <div>
-              <h3 style={{ fontSize: "1.1rem", margin: "0 0 12px 0" }}>{promo.title}</h3>
-              <a href="#" style={{ background: "#ffd700", color: "#222", padding: "8px 16px", borderRadius: "7px", textDecoration: "none", fontWeight: "bold" }}>{promo.description}</a>
+      {/* Category Cards */}
+      <div className="container mx-auto px-4 py-12">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 justify-items-center">
+          {/* Food Card */}
+          <div className="max-w-[350px] w-full bg-gradient-to-r from-yellow-400 to-yellow-500 rounded-lg p-6 flex items-center gap-4 cursor-pointer hover:scale-105 transition-transform">
+            <div className="flex-shrink-0">
+              <Image
+                src="/burger2.png"
+                alt="Burger"
+                width={80}
+                height={80}
+                className="rounded object-cover"
+              />
+            </div>
+            <div className="flex-1">
+              <h3 className="text-white font-bold text-xl mb-1">FOOD</h3>
+              <p className="text-black text-sm font-semibold">Buy Online</p>
             </div>
           </div>
-        ))}
-      </section>
 
-      <section style={{ display: "flex", alignItems: "flex-start", justifyContent: "center", gap: "40px" }}>
-        <img src="Burger4.png" alt="Burger Stack" style={{ width: "290px", borderRadius: "16px", boxShadow: "0 2px 18px #2221" }} />
-        <div>
-          <h2 style={{ fontSize: "1.4rem", marginBottom: "14px", lineHeight: "1.3" }}>FIND YOUR BRST TASTED FOOD AND DRINK JUST IN ONE PLACE</h2>
-          <ul style={{ listStyle: "none", padding: 0, margin: "0 0 18px 0" }}>
-            <li style={{ marginBottom: "6px" }}>Best price</li>
-            <li style={{ marginBottom: "6px" }}>Best service</li>
-            <li style={{ marginBottom: "6px" }}>Fresh ingredient</li>
-            <li style={{ marginBottom: "6px" }}>Health Protocol</li>
-          </ul>
-          <a href="#" style={{ background: "#ffd700", color: "#222", padding: "8px 22px", borderRadius: "10px", textDecoration: "none" }}>About us</a>
+          {/* Snack Card */}
+          <div className="max-w-[350px] w-full bg-gradient-to-r from-green-600 to-green-700 rounded-lg p-6 flex items-center gap-4 cursor-pointer hover:scale-105 transition-transform">
+            <div className="flex-shrink-0">
+              <Image
+                src="/potato.png"
+                alt="Fries"
+                width={80}
+                height={80}
+                className="rounded object-cover"
+              />
+            </div>
+            <div className="flex-1">
+              <h3 className="text-white font-bold text-xl mb-1">SNACK</h3>
+              <p className="text-black text-sm font-semibold">Buy Online</p>
+            </div>
+          </div>
+
+          {/* Beverage Card */}
+          <div className="max-w-[350px] w-full bg-gradient-to-r from-red-600 to-red-700 rounded-lg p-6 flex items-center gap-4 cursor-pointer hover:scale-105 transition-transform">
+            <div className="flex-shrink-0">
+              <Image
+                src="/juice.png"
+                alt="Drinks"
+                width={80}
+                height={80}
+                className="rounded object-cover"
+              />
+            </div>
+            <div className="flex-1">
+              <h3 className="text-white font-bold text-xl mb-1">BEVERAGE</h3>
+              <p className="text-black text-sm font-semibold">Buy Online</p>
+            </div>
+          </div>
         </div>
-      </section>
+      </div>
+      <div className="border-t border-yellow-300 my-4"></div>
+
+      <div className="container mx-auto px-4 py-12">
+        <div className="flex justify-center">
+          <div className="grid md:grid-cols-2 gap-35 max-w-[1300px] w-full">
+            {/* Burger Promo */}
+            <div className="max-w-[600px] w-full bg-[#171717] rounded-lg p-8 relative overflow-hidden">
+              <div className="relative z-10">
+                <span className="text-yellow-400 text-sm uppercase tracking-wider">
+                  Payday Promo
+                </span>
+                <h3 className="text-2xl md:text-3xl font-bold mt-2 mb-4">
+                  GET A 10% DISCOUNT ON <br /> PAYDAY WEEK
+                </h3>
+                <button className="text-yellow-400 font-semibold hover:text-yellow-300 transition">
+                  Buy Online
+                </button>
+              </div>
+              <div className="absolute right-4 bottom-4 w-40 h-40">
+                <Image
+                  src="/burger3.png"
+                  alt="Burger"
+                  fill
+                  className="object-cover rounded-lg"
+                />
+              </div>
+            </div>
+
+            {/* Drink Promo */}
+            <div className="max-w-[600px] w-full bg-[#171717] rounded-lg p-8 relative overflow-hidden">
+              <div className="relative z-10">
+                <span className="text-yellow-400 text-sm uppercase tracking-wider">
+                  Payday Promo
+                </span>
+                <h3 className="text-2xl md:text-3xl font-bold mt-2 mb-4">
+                  BUY 1 COKE GET MORE <br /> FREE 1 COKE
+                </h3>
+                <button className="text-yellow-400 font-semibold hover:text-yellow-300 transition">
+                  Buy Online
+                </button>
+              </div>
+              <div className="absolute right-4 bottom-4 w-40 h-48">
+                <Image
+                  src="/cocacola.png"
+                  alt="Drink"
+                  fill
+                  className="object-cover rounded-lg opacity-90"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div className="w-full bg-black text-white">
+        <div className="container mx-auto px-4 py-12">
+          <div className="grid md:grid-cols-2 gap-5 items-center max-w-7xl mx-auto">
+            {/* Left - Burger Image */}
+            <div className="relative w-[500px] h-80 md:h-96 rounded-lg overflow-hidden">
+              <Image
+                src="/Burger4.png"
+                alt="Burger"
+                fill
+                className="object-cover rounded-lg"
+              />
+            </div>
+            {/* Right - Content */}
+            <div className="space-y-6 w-[700px]">
+              <h2 className="text-3xl md:text-4xl font-bold leading-tight">
+                FIND YOUR BEST TASTED FOOD AND DRINK JUST IN ONE PLACE
+              </h2>
+
+              <div className="w-55 h-0.5 bg-yellow-400"></div>
+
+              {/* Features Grid */}
+              <div className="grid grid-cols-2 gap-4 py-4">
+                <div className="flex items-center gap-2">
+                  <ChevronRight className="w-5 h-5 text-yellow-400 flex-shrink-0" />
+                  <span className="text-sm md:text-base">Best price</span>
+                </div>
+
+                <div className="flex items-center gap-2">
+                  <ChevronRight className="w-5 h-5 text-yellow-400 flex-shrink-0" />
+                  <span className="text-sm md:text-base">Best Service</span>
+                </div>
+
+                <div className="flex items-center gap-2">
+                  <ChevronRight className="w-5 h-5 text-yellow-400 flex-shrink-0" />
+                  <span className="text-sm md:text-base">Fresh Ingredient</span>
+                </div>
+
+                <div className="flex items-center gap-2">
+                  <ChevronRight className="w-5 h-5 text-yellow-400 flex-shrink-0" />
+                  <span className="text-sm md:text-base">Health Protocol</span>
+                </div>
+              </div>
+
+              <button className="bg-yellow-400 text-black px-6 py-2.5 rounded font-semibold text-sm hover:bg-yellow-500 transition">
+                About us
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   );
-};
-
-export default App;
+}
