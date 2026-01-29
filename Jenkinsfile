@@ -24,5 +24,30 @@ pipeline {
                 archiveArtifacts artifacts: '.next/**', fingerprint: true
             }
         }
+
+        stage('Docker Build & Push') {
+            agent {
+                docker {
+                    image 'docker:cli'
+                    args '-u root -v /var/run/docker.sock:/var/run/docker.sock'
+                }
+            }
+            steps {
+                withCredentials([
+                    usernamePassword(
+                        credentialsId: 'docker-registry-creds',
+                        usernameVariable: 'DOCKER_USER',
+                        passwordVariable: 'DOCKER_PASS'
+                    )
+                ]) {
+                    sh '''
+                      echo "$DOCKER_PASS" | docker login -u "$DOCKER_USER" --password-stdin
+                      docker build -t nextsite:v1 .
+                      docker push nextsite:v1
+                    '''
+                }
+            }
+        }
+
     }
 }
