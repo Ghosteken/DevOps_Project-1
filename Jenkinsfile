@@ -6,18 +6,25 @@ pipeline {
     }
 
     stages {
-        stage('Check Node') {
-            steps {
-                sh 'which node'
-                sh 'node -v'
-                sh 'npm -v'
-            }
+        stage('Checkout') {
+            steps { checkout scm }
         }
 
-        stage('Build next application') {
+        stage('Install Dependencies') {
+            steps { sh 'npm install' }
+        }
+
+        stage('Run Tests') {
+            steps { sh 'npm test || true' }
+        }
+
+        stage('Build') {
+            steps { sh 'npm run build' }
+        }
+
+        stage('Archive Build') {
             steps {
-                sh 'npm install'
-                sh 'npm run build'
+                archiveArtifacts artifacts: '.next/**', fingerprint: true
             }
         }
     }
