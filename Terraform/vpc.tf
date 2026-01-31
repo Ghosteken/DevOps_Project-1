@@ -12,7 +12,7 @@ module "vpc" {
   source = "terraform-aws-modules/vpc/aws"
 
   name = "website-vpc"
-  cidr = "10.0.0.0/16"
+  cidr = var.cidr
 
   azs             = data.aws_availability_zones.azs.names
   private_subnets = var.private_subnets
@@ -20,8 +20,8 @@ module "vpc" {
   
   create_igw = true
   enable_nat_gateway = true
-  single_nat_gateway = false
-  one_nat_gateway_per_az = false
+  single_nat_gateway = true
+  one_nat_gateway_per_az = true
   map_public_ip_on_launch = true
 
   enable_dns_hostnames = true

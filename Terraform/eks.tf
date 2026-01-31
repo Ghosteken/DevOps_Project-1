@@ -23,15 +23,27 @@ module "eks" {
   kubernetes_version = "1.33"
 
   addons = {
-    coredns                = {}
-    eks-pod-identity-agent = {
-      before_compute = true
-    }
-    kube-proxy             = {}
-    vpc-cni                = {
-      before_compute = true
-    }
+  coredns = {
+    resolve_conflicts_on_create = "OVERWRITE"
+    resolve_conflicts_on_update = "OVERWRITE"
   }
+
+  kube-proxy = {
+    resolve_conflicts_on_create = "OVERWRITE"
+    resolve_conflicts_on_update = "OVERWRITE"
+  }
+
+  vpc-cni = {
+    before_compute              = true
+    resolve_conflicts_on_create = "OVERWRITE"
+    resolve_conflicts_on_update = "OVERWRITE"
+  }
+
+  eks-pod-identity-agent = {
+    before_compute = true
+  }
+}
+
 
   endpoint_public_access = true
   endpoint_private_access = true
@@ -39,7 +51,7 @@ module "eks" {
   # Optional: Adds the current caller identity as an administrator via cluster access entry
   enable_cluster_creator_admin_permissions = true
 
-  vpc_id                   = module.vpc.id
+  vpc_id                   = module.vpc.vpc_id
   subnet_ids               = module.vpc.private_subnets
 
   # EKS Managed Node Group(s)
@@ -56,7 +68,7 @@ module "eks" {
   }
 
   tags = {
-    Environment = "dev"
+    Environment = "test"
     Terraform   = "true"
   }
 }
