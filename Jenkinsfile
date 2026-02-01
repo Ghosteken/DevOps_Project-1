@@ -108,7 +108,9 @@ stage('Deploy to EKS with Ansible') {
                         credentialsId: 'docker-registry-creds',
                         usernameVariable: 'DOCKER_USER',
                         passwordVariable: 'DOCKER_PASS'
-                    )
+                    ),
+                    [$class: 'AmazonWebServicesCredentialsBinding', credentialsId: 'AWS_CRED']
+
                 ]) {
                     sh '''
                         # 1. Install dependencies
