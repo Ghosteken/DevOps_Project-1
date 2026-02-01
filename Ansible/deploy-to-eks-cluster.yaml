@@ -3,17 +3,35 @@
   hosts: localhost
   connection: local
   gather_facts: false
+
+  vars:
+    kubeconfig_path: "{{ lookup('env','KUBECONFIG') }}"
+
   tasks:
     - name: Create a k8s namespace
       kubernetes.core.k8s:
-        name: my-app
+        name: web-app
         api_version: v1
         kind: Namespace
         state: present
-        kubeconfig: /mnt/c/Users/Janitha/Desktop/Projects/Ansible/EKS cluster ans ansible/terraform/kubeconfig_app-cluster
+        kubeconfig: "{{ kubeconfig_path }}"
+    
+    - name: Create Docker Hub secret
+      kubernetes.core.k8s:
+        kubeconfig: "{{ kubeconfig_path }}"
+        namespace: web-app
+        definition:
+          apiVersion: v1
+          kind: Secret
+          metadata:
+            name: dockerhub-secret
+          type: kubernetes.io/dockerconfigjson
+          data:
+            .dockerconfigjson: "{{ lookup('env','DOCKER_CONFIG_JSON') }}"
+
     - name: deploy nginx app
       kubernetes.core.k8s:
-        src: /mnt/c/Users/Janitha/Desktop/Projects/Ansible/EKS cluster ans ansible/nginx.yaml
+        src: web-app.yaml
         state: present
-        kubeconfig: /mnt/c/Users/Janitha/Desktop/Projects/Ansible/EKS cluster ans ansible/terraform/kubeconfig_app-cluster
-        namespace: my-app
+        kubeconfig: "{{ kubeconfig_path }}"
+        namespace: web-app
