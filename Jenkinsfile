@@ -132,12 +132,7 @@ stage('Deploy to EKS with Ansible') {
 
                         # 4. Run Ansible
                         export KUBECONFIG=/var/jenkins_home/workspace/Next-site_ansible@2/kubeconfig
-                        cd Ansible
-                        echo "KUBECONFIG=$KUBECONFIG"
-                        ls -l $KUBECONFIG
-                        cat $KUBECONFIG | head -20
-
-                        
+                        cd Ansible                        
                         ansible-playbook deploy-to-eks-cluster.yaml
                     '''
                 }
