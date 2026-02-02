@@ -2,8 +2,6 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: webapp-deployment
-  labels:
-    app: web-app
 spec:
   replicas: 1
   selector:
@@ -14,12 +12,14 @@ spec:
       labels:
         app: web-app
     spec:
+      imagePullSecrets:
+        - name: dockerhub-secret   # 👈 ADD THIS LINE
       containers:
         - name: web-app
           image: janithadissanayaka/learn:burger
-          imagePullPolicy: Always
           ports:
             - containerPort: 80
+
 
 ---
 
