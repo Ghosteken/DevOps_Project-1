@@ -17,11 +17,17 @@ data "aws_eks_cluster_auth" "app" {
   depends_on = [module.eks]
 }
 
+variable cluster_name {
+  description = "EKS cluster name"
+  type        = string
+  default     = "demo-eks-cluster"
+}
+
 module "eks" {
   source  = "terraform-aws-modules/eks/aws"
   version = "~> 21.0"
 
-  name               = "website-cluster"
+  name               = var.cluster_name
   kubernetes_version = "1.33"
 
   addons = {
@@ -50,9 +56,9 @@ module "eks" {
       ami_type       = "AL2023_x86_64_STANDARD"
       instance_types = ["t3.small"]
 
-      min_size     = 4
-      max_size     = 6
-      desired_size = 5
+      min_size     = 1
+      max_size     = 2
+      desired_size = 1
     }
   }
 

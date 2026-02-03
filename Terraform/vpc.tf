@@ -1,5 +1,5 @@
 provider "aws" {
-  region = "ap-south-1"
+  region = var.aws_region
 }
 
 data "aws_availability_zones" "azs" {}
@@ -7,6 +7,7 @@ data "aws_availability_zones" "azs" {}
 variable cidr {}
 variable private_subnets {}
 variable public_subnets {}
+variable aws_region { }
 
 module "vpc" {
   source = "terraform-aws-modules/vpc/aws"
@@ -29,16 +30,16 @@ module "vpc" {
 
   
   tags = {
-    "kubernetes.io/cluster/website-cluster" = "shared"
+    "kubernetes.io/cluster/${var.cluster_name}" = "shared"
   }
 
   public_subnet_tags = {
-    "kubernetes.io/cluster/website-cluster" = "shared"
+    "kubernetes.io/cluster/${var.cluster_name}" = "shared"
     "kubernetes.io/role/elb"            = "1"
   }
 
   private_subnet_tags = {
-    "kubernetes.io/cluster/website-cluster" = "shared"
+    "kubernetes.io/cluster/${var.cluster_name}" = "shared"
     "kubernetes.io/role/internal-elb"   = "1"
   }
 
