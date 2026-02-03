@@ -3,7 +3,7 @@ project: DevOps CI/CD Pipeline on AWS EKS
 description:
   This project demonstrates an end-to-end DevOps pipeline that builds, containerizes, provisions infrastructure, and deploys an application to Kubernetes (EKS) on AWS.
 
-tech_stack:
+tech stack:
   - Jenkins (CI/CD)
   - Docker
   - Kubernetes (EKS)
@@ -12,7 +12,7 @@ tech_stack:
   - AWS
   - Next.js
 
-pipeline_flow:
+pipeline flow:
   - Code pushed to GitHub
   - Jenkins builds and tests the app
   - Docker image is created and pushed to registry
@@ -20,7 +20,7 @@ pipeline_flow:
   - Ansible deploys the application to EKS
   - Application is exposed using NGINX Ingress
 
-project_structure:
+project structure:
   - Ansible: Kubernetes deployment playbooks
   - Terraform: AWS infrastructure as code
   - Dockerfile: Application container image
