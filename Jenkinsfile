@@ -145,7 +145,7 @@ pipeline{
                                 # --------------------
 
                                 # 4. Run Ansible
-                                export KUBECONFIG=/var/jenkins_home/workspace/Next-site_ansible@2/kubeconfig
+                                export KUBECONFIG=$WORKSPACE/kubeconfig
                                 cd Ansible                        
                                 ansible-playbook deploy-to-eks-cluster.yaml
                             '''
