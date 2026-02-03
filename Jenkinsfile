@@ -82,7 +82,8 @@ pipeline{
                         sh '''
 
                             # 1. Install AWS CLI and curl (needed for kubectl)
-                            apk add --no-cache aws-cli curl
+                            apk add --no-cache aws-cli curl ca-certificates openssl 
+                            update-ca-certificates
 
                             # 2. Install kubectl manually
                             curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl"
