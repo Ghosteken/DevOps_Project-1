@@ -7,10 +7,10 @@ pipeline{
     }
 
     environment {
-        IMAGE = 'janithadissanayaka/learn:burger'
-        AWS_REGION = 'ap-south-1'
-        CLUSTER_NAME = 'website-cluster'
-        DOCKER_EMAIL='janithadissnayakaa@gmail.com'
+        IMAGE = 'your-dockerhub-username/web-app:latest'
+        AWS_REGION = 'your-aws-region'
+        CLUSTER_NAME = 'your-eks-cluster-name'
+        DOCKER_EMAIL='your-email@example.com'
     }
 
 

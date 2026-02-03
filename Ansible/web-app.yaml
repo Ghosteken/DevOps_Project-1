@@ -17,7 +17,7 @@ spec:
         - name: dockerhub-secret
       containers:
         - name: web-app
-          image: janithadissanayaka/learn:burger
+          image: <image>
           ports:
             - containerPort: 3000
 
