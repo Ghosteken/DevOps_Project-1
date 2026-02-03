@@ -50,13 +50,22 @@ pipeline{
                     )
                 ]) {
                     sh '''
-                      echo "$DOCKER_PASS" | docker login -u "$DOCKER_USER" --password-stdin
-                      docker build -t $IMAGE .
-                      docker push $IMAGE
+                    echo "$DOCKER_PASS" | docker login -u "$DOCKER_USER" --password-stdin
+
+                    # Enable buildx
+                    docker buildx create --use || true
+                    docker buildx inspect --bootstrap
+
+                    # Build with platform metadata
+                    docker buildx build \
+                        --platform linux/amd64 \
+                        -t $IMAGE \
+                        --push .
                     '''
                 }
             }
         }
+
 
         stage('Provision Server') {
             agent {
